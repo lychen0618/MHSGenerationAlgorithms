@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.BitSet;
 
-public class Hypergraph {
+public class Hypergraph implements Cloneable{
     private int numOfVertex;
     private ArrayList<BitSet> edges;
 
@@ -61,6 +61,12 @@ public class Hypergraph {
                 edges.get(e).set(i);
             }
         }
+    }
+
+    public Hypergraph clone() throws CloneNotSupportedException {
+        Hypergraph cloned=(Hypergraph)super.clone();
+        cloned.edges=(ArrayList)edges.clone();
+        return cloned;
     }
 
     public int num_verts() {
